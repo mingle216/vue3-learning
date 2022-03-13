@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>事件修饰符</title>
+  </head>
+  <body>
+    <div id="root">
+      <!-- <a @click.prevent="doThis" href="#">点击</a>
+      <form action="/login" @submit.prevent="doThis('hello')" methods="get")>
+        <input type="submit" value="提交"> -->
+        <h2 v-if="show">{{info}}</h2>
+        <input type="text" @keyup.enter="submit">
+      </form>
+    </div>
+
+    <script src="https://unpkg.com/vue@next" ></script>
+
+    <script>
+      const app = Vue.createApp({
+        data() {
+          return {
+            link:"http://www.baidu.com",
+            info:'hello',
+            show:false
+          }
+        },
+        methods: {
+          doThis(msg){
+            alert(msg);
+          },
+          submit(){
+            alert('enter')
+            this.show=true
+        },
+      }
+        // template: `<h2>{{message}} {{date}}</h2>`,
+      })
+      //vm代表的就是Vue应用的根组件
+      const vm = app.mount('#root')
+    </script>
+  </body>
+</html>
