@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <div :style="{'background-color':bockcolor,'height':'800px'}">
+        <button :style="{'color':fontcolor}" @click="changColor">一键换肤</button>
+      </div>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      let app = Vue.createApp({
+        data() {
+          return {
+            /* fontSize: 20, */
+            bockcolor: 'black',
+            fontcolor: 'red',
+          }
+        },
+        methods: {
+          changColor() {
+            this.bockcolor = this.bockcolor === 'black' ? 'red' : 'black'
+            this.fontcolor = this.fontcolor === 'red' ? 'black' : 'red'
+          },
+        },
+      })
+      let vm = app.mount('#app')
+    </script>
+  </body>
+
+  <html></html>
+</html>
