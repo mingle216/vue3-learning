@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>coumputed()</title>
+  <style>
+      
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p>{{ plusCount }}</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+      const { createApp, ref ,computed } = Vue
+      const App={
+        setup(){
+          //创建一个ref响应式数据
+          const count=ref(1);
+          //创建一个computed计算属性
+          const plusCount =computed({
+            //取值函数
+            get:()=>count.value+1,
+            //赋值函数
+            set:(val)=>{
+              count.value=val+2;
+            },
+          });
+          //为计算机属性赋值的操作，会触发set函数
+          plusCount.value=3;
+          //触发set函数后，count的值会被更新
+          console.log(count.value);
+          return{
+            plusCount,
+          };
+
+        },
+      };
+      createApp(App).mount('#app');
+  </script>
+</body>
+
+<html>

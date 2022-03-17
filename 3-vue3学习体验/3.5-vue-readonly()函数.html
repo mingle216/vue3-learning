@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>readonly()</title>
+  <style>
+      
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <p>original:{{original}}</p>
+    <p>copy:{{copy}}</p>
+  </div>
+
+  <script src="https://unpkg.com/vue@next"></script>
+  <script>
+      const { createApp, reactive,readonly } = Vue
+      const App={
+        setup(){
+          const original=reactive({count: 0});
+          const copy=readonly(original);
+          //original.count加1，copy.count也会加1
+          original.count++;
+          //因为是readyonly，copy.count也不会增加
+          copy.count++;//warning
+          return{
+            copy,
+            original,
+          };
+        },
+      };
+      createApp(App).mount('#app');
+  </script>
+</body>
+
+<html>

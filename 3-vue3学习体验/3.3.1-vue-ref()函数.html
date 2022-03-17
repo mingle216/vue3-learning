@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>ref（）函数</title>
+    <!-- 
+      传入一个值作为参数，返回一个基于该值的响应式Ref对象
+      当对象的值发生改变和访问，都会被跟踪上，通过修改number.value的值触发模板重新渲染，显示最新值
+     -->
+  </head>
+  <body>
+    <div id="app">
+      <p @click="printInfo">ref {{number}}</p>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script>
+      const { createApp, ref } = Vue
+      const App = {
+        setup() {
+          const number = ref(0)
+          const printInfo = () => {
+            number.value++
+          }
+          return {
+            number,
+            printInfo,
+          }
+        },
+      }
+      createApp(App).mount('#app')
+    </script>
+  </body>
+</html>
